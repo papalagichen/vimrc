@@ -12,6 +12,9 @@ set nobackup " Do not make a backup before overwriting a file
 set nowritebackup " Do not make a backup before overwriting a file
 set noswapfile " Don't create swapfiles
 
+" undo
+set noundofile
+
 " tab & space
 set autoindent
 set smartindent
@@ -21,10 +24,17 @@ set tabstop=4
 set shiftwidth=4
 set smarttab
 set expandtab
-autocmd Filetype html setlocal tabstop=2 softtabstop=2 shiftwidth=2
-autocmd Filetype ruby setlocal tabstop=2 softtabstop=2 shiftwidth=2
 
 " line number
 set number
 highlight LineNr ctermfg=grey
+
+" remove trailing spaces
+autocmd BufWritePre * :%s/\s\+$//e
+
+" disable persistent undo
+"set noundofile
+
+" disalbe auto visual on mouse
+set mouse-=a
 
